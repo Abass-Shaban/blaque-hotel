@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact &amp; Location | The Blaque Hotel & 24/7 Bistro</title>
+  <meta name="description" content="Reach The Blaque Hotel & 24/7 Bistro anytime. Call, WhatsApp, book a table, or visit us on Argwings Kodhek Road, Kilimani, Nairobi. Open 24/7." />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  
+  <!-- CSS Stylesheet -->
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ==========================================
+       TOP ANNOUNCEMENT BAR
+       ========================================== -->
+  <aside class="topbar" aria-label="Quick contact and operating hours">
+    <div class="container topbar-content">
+      <div class="topbar-left">
+        <span class="topbar-item">
+          <span class="pulse-dot"></span>
+          <strong>24/7 Kitchen Active:</strong> Serving breakfast, lunch, dinner &amp; midnight cravings
+        </span>
+      </div>
+      <div class="topbar-right">
+        <span class="topbar-item">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+          </svg>
+          <a href="tel:+254700123456" class="data-hotel-phone">+254 700 123 456</a>
+        </span>
+        <span class="topbar-item">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#25D366" stroke-width="2">
+            <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+          </svg>
+          <a href="#" class="data-hotel-whatsapp-link">WhatsApp Orders Active</a>
+        </span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ==========================================
+       MAIN NAVIGATION BAR
+       ========================================== -->
+  <header class="navbar">
+    <div class="container navbar-container">
+      <a href="index.html" class="brand-logo" aria-label="The Blaque Hotel Home">
+        <div class="logo-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M18 8h1a4 4 0 0 1 0 8h-1"></path>
+            <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path>
+            <line x1="6" y1="1" x2="6" y2="4"></line>
+            <line x1="10" y1="1" x2="10" y2="4"></line>
+            <line x1="14" y1="1" x2="14" y2="4"></line>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <span class="brand-name">THE BLAQUE</span>
+          <span class="brand-tagline">24/7 Hotel & Bistro</span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav Menu -->
+      <nav class="nav-menu" aria-label="Primary Navigation">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="menu.html" class="nav-link">Our Menu</a>
+        <a href="menu.html?cat=specials" class="nav-link">Specials</a>
+        <a href="about.html" class="nav-link">About Us</a>
+        <a href="index.html#reviews" class="nav-link">Reviews</a>
+        <a href="contact.html" class="nav-link active">Contact</a>
+      </nav>
+
+      <!-- Nav Actions -->
+      <div class="nav-actions">
+        <!-- Cart Button -->
+        <button type="button" class="cart-btn open-cart-btn" aria-label="View shopping cart">
+          <div class="cart-icon-wrapper">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="9" cy="21" r="1"></circle>
+              <circle cx="20" cy="21" r="1"></circle>
+              <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+            </svg>
+            <span class="cart-count-badge" id="navCartCount">0</span>
+          </div>
+          <span class="cart-btn-text">Cart</span>
+        </button>
+
+        <!-- Mobile Hamburger Button -->
+        <button type="button" class="menu-toggle" id="mobileMenuToggle" aria-label="Toggle navigation menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Overlay -->
+  <div class="mobile-nav-overlay" id="mobileNavOverlay"></div>
+  <aside class="mobile-nav-drawer" id="mobileDrawer" aria-label="Mobile Navigation">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 1rem;">
+      <div class="brand-text">
+        <span class="brand-name" style="font-size:1.2rem;">THE BLAQUE</span>
+        <span class="brand-tagline">24/7 Hotel Bistro</span>
+      </div>
+      <button type="button" id="mobileDrawerClose" style="font-size:1.5rem; color:var(--color-text); padding:0.4rem;">&times;</button>
+    </div>
+
+    <div class="badge-24h" style="align-self: flex-start; margin-bottom: 1rem;">
+      <span class="pulse-dot"></span> Kitchen Active 24/7
+    </div>
+
+    <nav class="mobile-nav-links">
+      <a href="index.html" class="mobile-nav-link">Home</a>
+      <a href="menu.html" class="mobile-nav-link">Full Menu &amp; Order</a>
+      <a href="menu.html?cat=specials" class="mobile-nav-link">Daily Specials</a>
+      <a href="about.html" class="mobile-nav-link">About Hotel &amp; Kitchen</a>
+      <a href="contact.html" class="mobile-nav-link active">Location &amp; Contact</a>
+    </nav>
+
+    <div style="margin-top: auto; display:flex; flex-direction:column; gap:0.8rem; padding-top:1.5rem; border-top:1px solid var(--color-border);">
+      <button type="button" class="btn btn-primary btn-block open-cart-btn">
+        View Cart (<span class="cart-count-badge" style="position:static; display:inline-flex;">0</span>)
+      </button>
+      <a href="#" class="btn btn-whatsapp btn-block data-hotel-whatsapp-link">
+        Chat on WhatsApp
+      </a>
+      <a href="tel:+254700123456" class="btn btn-outline btn-block data-hotel-phone">
+        Call Kitchen
+      </a>
+    </div>
+  </aside>
+
+  <!-- ==========================================
+       CONTACT HERO BANNER
+       ========================================== -->
+  <header style="background: linear-gradient(135deg, rgba(32, 33, 36, 0.94), rgba(32, 33, 36, 0.90)), url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat; color:#fff; padding: 4.5rem 0 3.5rem; text-align:center;">
+    <div class="container">
+      <div class="badge-24h" style="margin-bottom: 1rem;">
+        <span class="pulse-dot"></span> We Are Ready For Your Call
+      </div>
+      <h1 style="font-family: var(--font-heading); font-size: clamp(2.2rem, 4.2vw, 3.4rem); font-weight:800; margin-bottom:0.8rem;">
+        Contact &amp; Location
+      </h1>
+      <p style="max-width: 680px; margin: 0 auto; color: rgba(255, 255, 255, 0.85); font-size: 1.15rem;">
+        Get in touch round the clock. Enquire about dining, advance party platters, delivery dispatch, or walk right in.
+      </p>
+    </div>
+  </header>
+
+  <main class="section">
+    <div class="container">
+      
+      <!-- Primary Contact & Form Grid -->
+      <div class="location-grid" style="margin-bottom: 3.5rem;">
+        
+        <!-- Interactive Inquiry Form -->
+        <div class="contact-card-box">
+          <span class="section-tag">Direct Inquiry &amp; Table Booking</span>
+          <h2 style="font-size:1.6rem; font-weight:800; color:var(--color-primary); margin-bottom:0.5rem;">
+            Send Us a Message
+          </h2>
+          <p style="font-size:0.9rem; color:var(--color-text-muted); margin-bottom:1.5rem;">
+            For advance table reservations, corporate breakfast trays, or late-night enquiries, fill out the form below or chat immediately on WhatsApp.
+          </p>
+
+          <form id="contactInquiryForm" onsubmit="handleInquirySubmit(event)">
+            <div class="cart-form-group" style="margin-bottom:1rem;">
+              <label for="inqName">Your Name *</label>
+              <input type="text" id="inqName" placeholder="e.g. Grace Njeri" required />
+            </div>
+
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-bottom:1rem;">
+              <div class="cart-form-group">
+                <label for="inqPhone">Phone / WhatsApp *</label>
+                <input type="tel" id="inqPhone" placeholder="e.g. 0712 345 678" required />
+              </div>
+              <div class="cart-form-group">
+                <label for="inqEmail">Email Address</label>
+                <input type="email" id="inqEmail" placeholder="e.g. grace@example.com" />
+              </div>
+            </div>
+
+            <div class="cart-form-group" style="margin-bottom:1rem;">
+              <label for="inqType">Inquiry Type</label>
+              <select id="inqType">
+                <option value="Food Order Inquiry">Food Order / Preparation Inquiry</option>
+                <option value="Table Reservation">Table Reservation (Dine-In)</option>
+                <option value="Advance Catering">Advance Party / Corporate Catering</option>
+                <option value="Delivery Question">Delivery Coverage / Rider Query</option>
+                <option value="General Feedback">General Hospitality Feedback</option>
+              </select>
+            </div>
+
+            <div class="cart-form-group" style="margin-bottom:1.5rem;">
+              <label for="inqMessage">Your Message / Dietary Requests *</label>
+              <textarea id="inqMessage" rows="4" placeholder="How can we serve you? Let us know guest count, preferred time, or meal preferences..." required></textarea>
+            </div>
+
+            <div style="display:flex; flex-direction:column; gap:0.8rem;">
+              <button type="submit" class="btn btn-primary btn-block btn-lg">
+                Send Inquiry Message
+              </button>
+              <button type="button" class="btn btn-whatsapp btn-block" onclick="sendInquiryViaWhatsApp()">
+                Send Directly via WhatsApp
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Quick Contacts & Info Box -->
+        <div style="display:flex; flex-direction:column; gap:1.5rem;">
+          <div class="contact-card-box">
+            <h3 style="font-size:1.35rem; font-weight:800; color:var(--color-primary); margin-bottom:0.8rem;">
+              Hotel Front &amp; Kitchen Contacts
+            </h3>
+
+            <div class="contact-detail-row">
+              <div class="contact-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                  <circle cx="12" cy="10" r="3"></circle>
+                </svg>
+              </div>
+              <div>
+                <h5>Physical Address</h5>
+                <p class="data-hotel-address">Argwings Kodhek Road, Kilimani, Nairobi, Kenya</p>
+                <span style="font-size:0.82rem; color:var(--color-text-light);">Near Yaya Centre, Opposite Blaque Towers</span>
+              </div>
+            </div>
+
+            <div class="contact-detail-row">
+              <div class="contact-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                </svg>
+              </div>
+              <div>
+                <h5>Phone Hotlines</h5>
+                <p><a href="tel:+254700123456" class="data-hotel-phone">+254 700 123 456</a> (Front Desk &amp; Orders)</p>
+                <p><a href="tel:+254711789012" class="data-hotel-phone-sec">+254 711 789 012</a> (Kitchen &amp; Bar)</p>
+              </div>
+            </div>
+
+            <div class="contact-detail-row">
+              <div class="contact-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                  <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
+              </div>
+              <div>
+                <h5>Email Enquiries</h5>
+                <p><a href="mailto:dining@blaquehotel.co.ke" class="data-hotel-email">dining@blaquehotel.co.ke</a></p>
+              </div>
+            </div>
+
+            <div class="contact-detail-row">
+              <div class="contact-icon" style="background-color: var(--color-success-bg); color: var(--color-whatsapp);">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2z"></path>
+                </svg>
+              </div>
+              <div>
+                <h5>24-Hour WhatsApp Desk</h5>
+                <p>Instant chat with on-duty kitchen staff.</p>
+                <a href="#" class="btn btn-whatsapp btn-sm data-hotel-whatsapp-link" style="margin-top:0.4rem;">
+                  Chat On WhatsApp
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Operating Hours Card -->
+          <div style="background:var(--color-bg-alt); padding:1.8rem; border-radius:var(--radius-lg); border:1px solid var(--color-border);">
+            <h4 style="font-size:1.15rem; font-weight:700; color:var(--color-primary); margin-bottom:0.8rem; display:flex; align-items:center; gap:0.5rem;">
+              <span class="pulse-dot"></span> Operating Hours
+            </h4>
+            <table style="width:100%; font-size:0.9rem; border-collapse:collapse;">
+              <tr style="border-bottom:1px solid var(--color-border-subtle); padding:0.4rem 0;">
+                <td style="padding:0.4rem 0;"><strong>Monday – Sunday</strong></td>
+                <td style="text-align:right; color:var(--color-secondary); font-weight:700;">24 Hours / 7 Days</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--color-border-subtle); padding:0.4rem 0;">
+                <td style="padding:0.4rem 0;">Public Holidays</td>
+                <td style="text-align:right; color:var(--color-secondary); font-weight:700;">Open All Day &amp; Night</td>
+              </tr>
+              <tr>
+                <td style="padding:0.4rem 0;">Midnight Kitchen</td>
+                <td style="text-align:right; color:var(--color-accent); font-weight:700;">Active 12:00 AM – 6:00 AM</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- Google Maps Embed & Arrival Directions -->
+      <div style="margin-top: 2rem;">
+        <div class="section-header" style="margin-bottom: 1.5rem;">
+          <span class="section-tag">Interactive Map</span>
+          <h2 class="section-title">How To Find Us</h2>
+          <p class="section-subtitle">
+            Secure, guarded on-premise parking available at all hours. Wheelchair accessible dining hall and well-lit entrance.
+          </p>
+        </div>
+
+        <div class="map-container" style="min-height: 420px;">
+          <iframe 
+            class="data-hotel-maps-embed"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15955.163351984218!2d36.7844007!3d-1.2920659!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f109867c4ec11%3A0x6bcfd35c59f0f9b!2sKilimani%2C%20Nairobi!5e0!3m2!1sen!2ske!4v1700000000000!5m2!1sen!2ske" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade"
+            title="The Blaque Hotel Location Map">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- ==========================================
+       SHOPPING CART DRAWER (SHARED)
+       ========================================== -->
+  <div class="cart-overlay" id="cartOverlay"></div>
+  <aside class="cart-drawer" id="cartDrawer" aria-label="Shopping Cart">
+    <div class="cart-header">
+      <div class="cart-header-title">
+        <h3>Your Order</h3>
+        <span class="cart-tag">24/7 Kitchen</span>
+      </div>
+      <button type="button" class="cart-close-btn" id="cartCloseBtn" aria-label="Close cart">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+
+    <div class="cart-body">
+      <!-- Empty State -->
+      <div class="cart-empty-state" id="cartEmptyState">
+        <svg class="cart-empty-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <circle cx="9" cy="21" r="1"></circle>
+          <circle cx="20" cy="21" r="1"></circle>
+          <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+        </svg>
+        <h4>Your Cart is Empty</h4>
+        <p>Explore our round-the-clock menu to add food, snacks, and beverages.</p>
+        <a href="menu.html" class="btn btn-primary btn-sm" onclick="window.hotelCart && window.hotelCart.closeDrawer();">
+          Browse Menu Now
+        </a>
+      </div>
+
+      <!-- Item List -->
+      <div class="cart-items-list" id="cartItemsList"></div>
+
+      <!-- Customer & Service Form -->
+      <form class="cart-form-section" id="cartOrderForm" onsubmit="event.preventDefault();">
+        <div class="cart-form-group">
+          <label>Order Type</label>
+          <div class="order-type-chips">
+            <button type="button" class="order-type-chip active" data-type="dine_in">🍽️ Dine-In</button>
+            <button type="button" class="order-type-chip" data-type="takeaway">🛍️ Takeaway</button>
+            <button type="button" class="order-type-chip" data-type="delivery">🛵 Delivery</button>
+          </div>
+        </div>
+
+        <div class="cart-form-group" id="dineInDetails">
+          <label for="tableNumber">Table No. or Hotel Room No. (Optional)</label>
+          <input type="text" id="tableNumber" placeholder="e.g. Table 4 / Room 208" />
+        </div>
+
+        <div class="cart-form-group" id="takeawayDetails" style="display:none;">
+          <label for="pickupTime">Estimated Pickup Time</label>
+          <input type="text" id="pickupTime" placeholder="e.g. ASAP (~20 mins) or 10:30 PM" />
+        </div>
+
+        <div class="cart-form-group" id="deliveryDetails" style="display:none;">
+          <label for="deliveryAddress">Delivery Address &amp; Landmark</label>
+          <input type="text" id="deliveryAddress" placeholder="Building, Street, Landmark in Nairobi" />
+        </div>
+
+        <div class="cart-form-group">
+          <label for="customerName">Your Full Name *</label>
+          <input type="text" id="customerName" placeholder="e.g. Alex Mwangi" required />
+        </div>
+
+        <div class="cart-form-group">
+          <label for="customerPhone">Phone Number *</label>
+          <input type="tel" id="customerPhone" placeholder="e.g. 0712 345 678" required />
+        </div>
+
+        <div class="cart-form-group">
+          <label for="orderNotes">Special Instructions / Allergies</label>
+          <textarea id="orderNotes" rows="2" placeholder="e.g. No onions, extra chili sauce, mild spice..."></textarea>
+        </div>
+      </form>
+    </div>
+
+    <div class="cart-footer" id="cartFooter">
+      <div class="cart-summary-line">
+        <span>Subtotal</span>
+        <span id="cartSubtotalAmount">KES 0</span>
+      </div>
+      <div class="cart-summary-line total">
+        <span>Total Amount</span>
+        <span id="cartTotalAmount">KES 0</span>
+      </div>
+
+      <p class="cart-disclaimer">
+        ⚠️ Orders are freshly cooked and subject to kitchen acknowledgement.
+      </p>
+
+      <button type="button" class="btn btn-whatsapp btn-block" id="btnSubmitWhatsApp">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2z"></path>
+        </svg>
+        Order via WhatsApp
+      </button>
+
+      <button type="button" class="btn btn-outline btn-block btn-sm" id="btnSubmitDirect">
+        Submit Order on Website
+      </button>
+    </div>
+  </aside>
+
+  <!-- ==========================================
+       ORDER CONFIRMATION VOUCHER MODAL
+       ========================================== -->
+  <div class="modal-overlay" id="voucherModal" aria-modal="true" role="dialog">
+    <div class="modal-content">
+      <button type="button" class="modal-close-btn" id="voucherCloseBtn" aria-label="Close modal">&times;</button>
+      <div class="voucher-box">
+        <div class="voucher-header">
+          <div class="voucher-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+          </div>
+          <h3 style="font-family: var(--font-heading); font-size:1.6rem; color:var(--color-primary); margin-bottom:0.3rem;">
+            Order Submitted!
+          </h3>
+          <p style="color:var(--color-text-muted); font-size:0.92rem;">
+            Here is your digital kitchen order voucher:
+          </p>
+          <div class="voucher-ref" id="voucherOrderRef">#BQ-000000</div>
+          <div style="font-size:0.8rem; color:var(--color-text-light); margin-top:0.4rem;" id="voucherOrderTime">Just now</div>
+        </div>
+
+        <div class="voucher-alert">
+          <strong>⚠️ Status: PENDING ACKNOWLEDGEMENT</strong><br />
+          An order is not confirmed until the hotel kitchen acknowledges it. Please confirm with our staff via WhatsApp or telephone to initiate preparation.
+        </div>
+
+        <div style="text-align:left; font-size:0.88rem; margin:1rem 0; padding:0.8rem; background:var(--color-bg); border-radius:var(--radius-sm);">
+          <div><strong>Customer:</strong> <span id="voucherCustomerInfo">-</span></div>
+          <div style="margin-top:0.3rem;"><strong>Service:</strong> <span id="voucherOrderType">-</span></div>
+        </div>
+
+        <table class="voucher-summary-table">
+          <thead>
+            <tr>
+              <th>Dish</th>
+              <th style="text-align:center;">Qty</th>
+              <th style="text-align:right;">Subtotal</th>
+            </tr>
+          </thead>
+          <tbody id="voucherItemsTable"></tbody>
+        </table>
+
+        <div style="display:flex; justify-content:space-between; align-items:center; padding-top:0.8rem; border-top:2px solid var(--color-border); font-size:1.15rem; font-weight:800;">
+          <span>Total:</span>
+          <span id="voucherOrderTotal" style="color:var(--color-secondary);">KES 0</span>
+        </div>
+
+        <div class="voucher-actions">
+          <button type="button" class="btn btn-whatsapp btn-block" id="voucherWhatsAppLink">
+            Send This Voucher via WhatsApp
+          </button>
+          <a href="tel:+254700123456" class="btn btn-outline btn-block data-hotel-phone">
+            Call Front Desk to Confirm
+          </a>
+          <button type="button" class="btn btn-outline btn-block btn-sm" id="voucherDoneBtn">
+            Done / Close Voucher
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       FLOATING ACTION BUTTONS (MOBILE ASSIST)
+       ========================================== -->
+  <aside class="floating-actions" aria-label="Emergency and Quick Contact">
+    <a href="#" class="fab-btn fab-whatsapp data-hotel-whatsapp-link" title="Chat on WhatsApp" aria-label="Chat on WhatsApp">
+      <svg viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2z"></path>
+      </svg>
+    </a>
+    <a href="tel:+254700123456" class="fab-btn fab-call data-hotel-phone" title="Call Hotel Front Desk" aria-label="Call Hotel Front Desk">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+      </svg>
+    </a>
+  </aside>
+
+  <!-- ==========================================
+       FOOTER
+       ========================================== -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <h3 class="data-hotel-name">The Blaque Hotel &amp; 24/7 Bistro</h3>
+        <p>
+          Delicious food, refreshing beverages, and warm hospitality round the clock. Proudly serving Kilimani and Nairobi with dine-in, takeaway, and late-night culinary excellence.
+        </p>
+        <div class="footer-socials">
+          <a href="#" class="social-icon data-social-facebook" aria-label="Facebook">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+          </a>
+          <a href="#" class="social-icon data-social-instagram" aria-label="Instagram">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+          </a>
+          <a href="#" class="social-icon data-social-tiktok" aria-label="TikTok">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 3 15.68 6.34 6.34 0 0 0 9.35 22a6.33 6.33 0 0 0 6.33-6.32V8.75a8.16 8.16 0 0 0 4.91 1.62v-3.68z"></path></svg>
+          </a>
+          <a href="#" class="social-icon data-social-twitter" aria-label="Twitter">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Menu Categories</h4>
+        <div class="footer-links">
+          <a href="menu.html?cat=breakfast">Breakfast Classics</a>
+          <a href="menu.html?cat=main_meals">Hearty Main Meals</a>
+          <a href="menu.html?cat=fast_food">Fast Food &amp; Snacks</a>
+          <a href="menu.html?cat=beverages">Hot &amp; Cold Beverages</a>
+          <a href="menu.html?cat=specials">Chef's Daily Specials</a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Quick Navigation</h4>
+        <div class="footer-links">
+          <a href="index.html">Home</a>
+          <a href="menu.html">Full Menu &amp; Ordering</a>
+          <a href="about.html">About The Hotel</a>
+          <a href="index.html#reviews">Customer Reviews</a>
+          <a href="contact.html">Location &amp; Directions</a>
+          <a href="index.html#faq">Frequently Asked Questions</a>
+          <a href="kitchen.html" style="color:var(--color-accent); font-weight:700;">👨‍🍳 Kitchen Order Screen (KDS)</a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>24-Hour Hospitality</h4>
+        <div class="footer-info-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"></circle>
+            <polyline points="12 6 12 12 16 14"></polyline>
+          </svg>
+          <div>
+            <strong>Hours:</strong> Open 24/7 All Year
+          </div>
+        </div>
+        <div class="footer-info-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+            <circle cx="12" cy="10" r="3"></circle>
+          </svg>
+          <div class="data-hotel-address">
+            Argwings Kodhek Road, Kilimani, Nairobi
+          </div>
+        </div>
+        <div class="footer-info-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+          </svg>
+          <div>
+            <a href="tel:+254700123456" class="data-hotel-phone">+254 700 123 456</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <div>
+        &copy; <span id="currentYear">2026</span> <strong class="data-hotel-name">The Blaque Hotel &amp; 24/7 Bistro</strong>. All rights reserved.
+      </div>
+      <div>
+        <span>Notice: An order is not confirmed until acknowledged by the hotel.</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/config.js"></script>
+  <script src="js/orders.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/main.js"></script>
+
+  <!-- Contact Form Script -->
+  <script>
+    function handleInquirySubmit(e) {
+      e.preventDefault();
+      const name = document.getElementById('inqName').value.trim();
+      const phone = document.getElementById('inqPhone').value.trim();
+      const email = document.getElementById('inqEmail') ? document.getElementById('inqEmail').value.trim() : '';
+      const type = document.getElementById('inqType').value;
+      const message = document.getElementById('inqMessage').value.trim();
+
+      if (!name || !phone) {
+        if (window.hotelCart) window.hotelCart.showToast('Please fill out your name and phone.', 'error');
+        return;
+      }
+
+      // Save inquiry to Supabase cloud database
+      if (window.hotelOrderService) {
+        window.hotelOrderService.submitInquiry({ name, phone, email, type, message });
+      }
+
+      if (window.hotelCart) {
+        window.hotelCart.showToast(`Thank you, ${name}! Your inquiry for "${type}" was received. Our team will contact you shortly.`, 'success');
+      }
+
+      e.target.reset();
+    }
+
+    function sendInquiryViaWhatsApp() {
+      const name = document.getElementById('inqName').value.trim() || 'Guest';
+      const phone = document.getElementById('inqPhone').value.trim() || 'Not specified';
+      const type = document.getElementById('inqType').value;
+      const msg = document.getElementById('inqMessage').value.trim() || 'Enquiry regarding dining / catering services.';
+
+      let text = `*🏨 ${HOTEL_CONFIG.name.toUpperCase()}*\n`;
+      text += `*NEW HOSPITALITY INQUIRY*\n`;
+      text += `━━━━━━━━━━━━━━━━━━━━━\n`;
+      text += `👤 *Name:* ${name}\n`;
+      text += `📞 *Phone:* ${phone}\n`;
+      text += `📌 *Inquiry Type:* ${type}\n`;
+      text += `📝 *Message:* ${msg}\n`;
+      text += `━━━━━━━━━━━━━━━━━━━━━\n`;
+      text += `_Sent via Blaque Hotel Website_`;
+
+      const encoded = encodeURIComponent(text);
+      window.open(`https://wa.me/${HOTEL_CONFIG.whatsappNumber}?text=${encoded}`, '_blank');
+    }
+  </script>
+</body>
+</html>

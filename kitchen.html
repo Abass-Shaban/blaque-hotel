@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kitchen Display System (KDS) | The Blaque Hotel 24/7 Bistro</title>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  
+  <!-- CSS Stylesheet -->
+  <link rel="stylesheet" href="css/style.css" />
+  
+  <style>
+    /* KDS Specific Styling */
+    body {
+      background-color: #18191B;
+      color: #E6E6E6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .kds-navbar {
+      background-color: #202124;
+      border-bottom: 2px solid #2F3136;
+      padding: 0.9rem 1.5rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+    }
+
+    .kds-nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .kds-clock {
+      font-family: monospace;
+      font-size: 1.25rem;
+      font-weight: 700;
+      background: #121314;
+      padding: 0.4rem 0.9rem;
+      border-radius: var(--radius-sm);
+      color: var(--color-accent);
+      border: 1px solid rgba(244, 185, 66, 0.3);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .kds-metrics-bar {
+      background-color: #26272B;
+      border-bottom: 1px solid #33353A;
+      padding: 1rem 1.5rem;
+    }
+
+    .kds-metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1rem;
+    }
+
+    .metric-card {
+      background-color: #1E1F22;
+      border-radius: var(--radius-md);
+      padding: 0.85rem 1.2rem;
+      border-left: 4px solid #555;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .metric-card.pending { border-left-color: var(--color-secondary); }
+    .metric-card.preparing { border-left-color: #2979FF; }
+    .metric-card.ready { border-left-color: #00E676; }
+    .metric-card.revenue { border-left-color: var(--color-accent); }
+
+    .metric-card .val {
+      font-family: var(--font-heading);
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: #FFF;
+      line-height: 1.1;
+      margin-top: 0.2rem;
+    }
+
+    .metric-card .label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #999;
+    }
+
+    /* KDS Controls Bar */
+    .kds-controls {
+      padding: 1rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .kds-filter-tabs {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .kds-tab-btn {
+      padding: 0.5rem 1rem;
+      border-radius: var(--radius-full);
+      background-color: #26272B;
+      color: #BBB;
+      font-weight: 600;
+      font-size: 0.85rem;
+      border: 1px solid #3A3C42;
+      transition: all var(--transition-fast);
+      cursor: pointer;
+    }
+
+    .kds-tab-btn:hover {
+      background-color: #33353B;
+      color: #FFF;
+    }
+
+    .kds-tab-btn.active {
+      background-color: var(--color-secondary);
+      color: #FFF;
+      border-color: var(--color-secondary);
+    }
+
+    /* Order Cards Grid */
+    .kds-grid {
+      padding: 0 1.5rem 2.5rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+      gap: 1.5rem;
+      flex: 1;
+    }
+
+    .order-kds-card {
+      background-color: #202124;
+      border-radius: var(--radius-lg);
+      border: 2px solid #33353A;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      transition: all var(--transition-base);
+      position: relative;
+    }
+
+    .order-kds-card.status-pending {
+      border-color: var(--color-secondary);
+      animation: kdsPulse 2s infinite alternate;
+    }
+
+    .order-kds-card.status-preparing {
+      border-color: #2979FF;
+    }
+
+    .order-kds-card.status-ready {
+      border-color: #00E676;
+    }
+
+    .order-kds-card.status-completed {
+      opacity: 0.65;
+      border-color: #444;
+    }
+
+    @keyframes kdsPulse {
+      0% { box-shadow: 0 0 10px rgba(255, 99, 50, 0.2); }
+      100% { box-shadow: 0 0 24px rgba(255, 99, 50, 0.6); }
+    }
+
+    .order-kds-header {
+      padding: 0.9rem 1.2rem;
+      background-color: #282A2E;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #33353A;
+    }
+
+    .order-kds-ref {
+      font-family: monospace;
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: #FFF;
+    }
+
+    .order-kds-badge {
+      font-size: 0.75rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      padding: 0.25rem 0.65rem;
+      border-radius: var(--radius-full);
+      letter-spacing: 0.04em;
+    }
+
+    .badge-status-pending { background: rgba(255, 99, 50, 0.2); color: var(--color-secondary); border: 1px solid var(--color-secondary); }
+    .badge-status-preparing { background: rgba(41, 121, 255, 0.2); color: #2979FF; border: 1px solid #2979FF; }
+    .badge-status-ready { background: rgba(0, 230, 118, 0.2); color: #00E676; border: 1px solid #00E676; }
+    .badge-status-completed { background: rgba(180, 180, 180, 0.2); color: #BBB; border: 1px solid #666; }
+
+    .order-kds-type {
+      padding: 0.6rem 1.2rem;
+      background-color: #1B1C1E;
+      font-size: 0.85rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #2D2F34;
+      color: var(--color-accent);
+    }
+
+    .order-kds-body {
+      padding: 1.2rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+
+    .customer-info-box {
+      font-size: 0.85rem;
+      color: #AAA;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 0.6rem;
+      border-bottom: 1px dashed #33353A;
+    }
+
+    .customer-info-box strong {
+      color: #FFF;
+    }
+
+    .kds-items-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      flex: 1;
+    }
+
+    .kds-item-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      font-size: 0.95rem;
+      line-height: 1.3;
+    }
+
+    .kds-item-name {
+      color: #FFF;
+      font-weight: 600;
+    }
+
+    .kds-item-qty {
+      background: var(--color-secondary);
+      color: #FFF;
+      font-weight: 800;
+      font-size: 0.8rem;
+      padding: 0.15rem 0.5rem;
+      border-radius: var(--radius-sm);
+      margin-right: 0.4rem;
+      display: inline-block;
+    }
+
+    .kds-instructions {
+      background: #2D241D;
+      border-left: 3px solid var(--color-accent);
+      padding: 0.6rem 0.8rem;
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      font-size: 0.82rem;
+      color: #F4C476;
+    }
+
+    .order-kds-footer {
+      padding: 1rem 1.2rem;
+      background-color: #1A1B1D;
+      border-top: 1px solid #33353A;
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+
+    .kds-total-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: #FFF;
+    }
+
+    .kds-action-btns {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.5rem;
+    }
+
+    .btn-kds {
+      padding: 0.65rem 1rem;
+      border-radius: var(--radius-sm);
+      font-weight: 700;
+      font-size: 0.88rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      border: none;
+    }
+
+    .btn-kds-accept {
+      background-color: var(--color-secondary);
+      color: #FFF;
+    }
+    .btn-kds-accept:hover {
+      background-color: var(--color-secondary-hover);
+    }
+
+    .btn-kds-ready {
+      background-color: #00C853;
+      color: #FFF;
+    }
+    .btn-kds-ready:hover {
+      background-color: #00B248;
+    }
+
+    .btn-kds-complete {
+      background-color: #37474F;
+      color: #ECEFF1;
+    }
+    .btn-kds-complete:hover {
+      background-color: #455A64;
+    }
+
+    .btn-kds-cancel {
+      background: transparent;
+      color: #EF5350;
+      border: 1px solid #EF5350;
+    }
+    .btn-kds-cancel:hover {
+      background: rgba(239, 83, 80, 0.15);
+    }
+
+    /* Empty KDS State */
+    .kds-empty {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 5rem 1rem;
+      color: #777;
+    }
+
+    .kds-empty svg {
+      width: 72px;
+      height: 72px;
+      margin-bottom: 1rem;
+      color: #444;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==========================================
+       KITCHEN NAVIGATION BAR
+       ========================================== -->
+  <header class="kds-navbar">
+    <div class="kds-nav-container">
+      <div style="display:flex; align-items:center; gap:0.9rem;">
+        <div class="logo-icon" style="width:40px; height:40px;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M18 8h1a4 4 0 0 1 0 8h-1"></path>
+            <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path>
+          </svg>
+        </div>
+        <div>
+          <h2 style="font-size:1.2rem; font-weight:800; color:#FFF; line-height:1.1;">THE BLAQUE KITCHEN</h2>
+          <span style="font-size:0.75rem; color:var(--color-secondary); font-weight:700; text-transform:uppercase; letter-spacing:0.08em;">
+            Live 24/7 Kitchen Display System (KDS)
+          </span>
+        </div>
+      </div>
+
+      <div style="display:flex; align-items:center; gap:1rem; flex-wrap:wrap;">
+        <!-- Digital Live Clock -->
+        <div class="kds-clock" id="kdsClock">
+          <span class="pulse-dot"></span>
+          <span id="kdsClockTime">00:00:00 AM</span>
+        </div>
+
+        <!-- Sound Chime Toggle -->
+        <button type="button" class="btn btn-outline-white btn-sm" id="btnToggleSound" title="Toggle audio bell chime on new orders">
+          <span id="soundIcon">🔔</span>
+          <span id="soundText">Sound: ON</span>
+        </button>
+
+        <!-- Simulation Button for Demonstration -->
+        <button type="button" class="btn btn-accent btn-sm" id="btnSimulateOrder">
+          + Simulate Order
+        </button>
+
+        <!-- Link to customer site -->
+        <a href="index.html" class="btn btn-outline-white btn-sm" target="_blank">
+          View Guest Site &rarr;
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==========================================
+       KITCHEN METRICS BAR
+       ========================================== -->
+  <aside class="kds-metrics-bar" aria-label="Kitchen performance metrics">
+    <div class="kds-metrics-grid">
+      <div class="metric-card pending">
+        <span class="label">Incoming (Pending)</span>
+        <span class="val" id="metricPendingCount">0</span>
+      </div>
+      <div class="metric-card preparing">
+        <span class="label">In Preparation</span>
+        <span class="val" id="metricPreparingCount">0</span>
+      </div>
+      <div class="metric-card ready">
+        <span class="label">Ready for Pickup</span>
+        <span class="val" id="metricReadyCount">0</span>
+      </div>
+      <div class="metric-card revenue">
+        <span class="label">Active Orders Total</span>
+        <span class="val" id="metricActiveTotal">KES 0</span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ==========================================
+       CONTROLS & TABS
+       ========================================== -->
+  <nav class="kds-controls">
+    <div class="kds-filter-tabs">
+      <button type="button" class="kds-tab-btn active" data-filter="active">Active Orders</button>
+      <button type="button" class="kds-tab-btn" data-filter="pending">Pending</button>
+      <button type="button" class="kds-tab-btn" data-filter="preparing">Cooking</button>
+      <button type="button" class="kds-tab-btn" data-filter="ready">Ready</button>
+      <button type="button" class="kds-tab-btn" data-filter="completed">Completed History</button>
+      <button type="button" class="kds-tab-btn" data-filter="all">All</button>
+    </div>
+
+    <div style="display:flex; align-items:center; gap:0.6rem;">
+      <button type="button" class="btn btn-outline-white btn-sm" id="btnClearCompleted" style="border-color:#444; color:#AAA;">
+        Archive Completed
+      </button>
+    </div>
+  </nav>
+
+  <!-- ==========================================
+       ORDERS DISPLAY GRID
+       ========================================== -->
+  <main class="kds-grid" id="kdsOrdersGrid">
+    <!-- Populated in real time by JS -->
+  </main>
+
+  <!-- Toast Notification Container for Staff -->
+  <div class="toast-container" id="kdsToastContainer"></div>
+
+  <!-- Supabase CDN Client -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <!-- Master Scripts -->
+  <script src="js/config.js"></script>
+  <script src="js/orders.js"></script>
+
+  <!-- Kitchen Controller Script -->
+  <script>
+    class KitchenDisplay {
+      constructor() {
+        this.currentFilter = 'active'; // 'active', 'pending', 'preparing', 'ready', 'completed', 'all'
+        this.soundEnabled = true;
+        this.grid = document.getElementById('kdsOrdersGrid');
+        this.init();
+      }
+
+      init() {
+        this.startClock();
+        this.bindEvents();
+        this.render();
+        this.loadFromSupabase();
+
+        // Listen for real-time incoming orders from customer pages
+        if (window.hotelOrderService) {
+          window.hotelOrderService.onOrderUpdate((order, action) => {
+            if (action === 'created' && this.soundEnabled) {
+              window.hotelOrderService.playOrderChime();
+              this.showToast(`🔔 New Order Received: ${order.id}`, 'success');
+            }
+            this.render();
+          });
+        }
+      }
+
+      async loadFromSupabase() {
+        if (window.hotelOrderService && window.hotelOrderService.supabase) {
+          try {
+            const { data, error } = await window.hotelOrderService.supabase
+              .from('orders')
+              .select('*, order_items(*)')
+              .order('created_at', { ascending: false })
+              .limit(50);
+
+            if (!error && data && data.length > 0) {
+              const mappedOrders = data.map(row => ({
+                id: row.id,
+                createdAt: row.created_at,
+                timestampFormatted: new Date(row.created_at).toLocaleString('en-KE', { dateStyle: 'medium', timeStyle: 'short' }),
+                customer: {
+                  name: row.customer_name,
+                  phone: row.customer_phone
+                },
+                orderType: row.order_type,
+                serviceDetail: row.service_detail,
+                instructions: row.special_instructions,
+                items: (row.order_items || []).map(i => ({
+                  id: i.menu_item_id,
+                  name: i.item_name,
+                  price: i.unit_price,
+                  quantity: i.quantity,
+                  subtotal: i.subtotal,
+                  note: i.custom_note
+                })),
+                totalAmount: row.total_amount,
+                currency: row.currency || 'KES',
+                status: row.status,
+                paymentStatus: row.payment_status
+              }));
+
+              window.hotelOrderService.saveOrders(mappedOrders);
+              this.render();
+            }
+          } catch (e) {
+            console.warn('Could not load existing orders from Supabase:', e);
+          }
+
+          this.subscribeToSupabaseRealtime();
+        }
+      }
+
+      subscribeToSupabaseRealtime() {
+        const sb = window.hotelOrderService.supabase;
+        if (!sb) return;
+
+        sb.channel('realtime-kitchen-orders')
+          .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'orders' }, async (payload) => {
+            const { data: items } = await sb.from('order_items').select('*').eq('order_id', payload.new.id);
+            
+            const newOrder = {
+              id: payload.new.id,
+              createdAt: payload.new.created_at,
+              timestampFormatted: new Date(payload.new.created_at).toLocaleString('en-KE', { dateStyle: 'medium', timeStyle: 'short' }),
+              customer: {
+                name: payload.new.customer_name,
+                phone: payload.new.customer_phone
+              },
+              orderType: payload.new.order_type,
+              serviceDetail: payload.new.service_detail,
+              instructions: payload.new.special_instructions,
+              items: (items || []).map(i => ({
+                id: i.menu_item_id,
+                name: i.item_name,
+                price: i.unit_price,
+                quantity: i.quantity,
+                subtotal: i.subtotal,
+                note: i.custom_note
+              })),
+              totalAmount: payload.new.total_amount,
+              currency: payload.new.currency || 'KES',
+              status: payload.new.status
+            };
+
+            const existing = window.hotelOrderService.getAllOrders();
+            if (!existing.some(o => o.id === newOrder.id)) {
+              existing.unshift(newOrder);
+              window.hotelOrderService.saveOrders(existing);
+            }
+
+            if (this.soundEnabled) {
+              window.hotelOrderService.playOrderChime();
+            }
+            this.showToast(`🔔 New Order Received: #${newOrder.id}`, 'success');
+            this.render();
+          })
+          .on('postgres_changes', { event: 'UPDATE', schema: 'public', table: 'orders' }, (payload) => {
+            const existing = window.hotelOrderService.getAllOrders();
+            const target = existing.find(o => o.id === payload.new.id);
+            if (target) {
+              target.status = payload.new.status;
+              window.hotelOrderService.saveOrders(existing);
+              this.render();
+            }
+          })
+          .subscribe();
+      }
+
+      startClock() {
+        const timeEl = document.getElementById('kdsClockTime');
+        const update = () => {
+          if (timeEl) {
+            const now = new Date();
+            timeEl.textContent = now.toLocaleTimeString('en-KE', { hour12: true });
+          }
+        };
+        setInterval(update, 1000);
+        update();
+      }
+
+      bindEvents() {
+        // Tab Filters
+        document.querySelectorAll('.kds-tab-btn').forEach(btn => {
+          btn.addEventListener('click', (e) => {
+            document.querySelectorAll('.kds-tab-btn').forEach(b => b.classList.remove('active'));
+            e.currentTarget.classList.add('active');
+            this.currentFilter = e.currentTarget.getAttribute('data-filter');
+            this.render();
+          });
+        });
+
+        // Sound Toggle
+        const btnSound = document.getElementById('btnToggleSound');
+        const soundIcon = document.getElementById('soundIcon');
+        const soundText = document.getElementById('soundText');
+        if (btnSound) {
+          btnSound.addEventListener('click', () => {
+            this.soundEnabled = !this.soundEnabled;
+            if (this.soundEnabled) {
+              soundIcon.textContent = '🔔';
+              soundText.textContent = 'Sound: ON';
+              window.hotelOrderService.playOrderChime();
+            } else {
+              soundIcon.textContent = '🔕';
+              soundText.textContent = 'Sound: OFF';
+            }
+          });
+        }
+
+        // Simulate Order Button
+        const btnSimulate = document.getElementById('btnSimulateOrder');
+        if (btnSimulate) {
+          btnSimulate.addEventListener('click', () => this.simulateSampleOrder());
+        }
+
+        // Archive Completed
+        const btnArchive = document.getElementById('btnClearCompleted');
+        if (btnArchive) {
+          btnArchive.addEventListener('click', () => {
+            if (confirm('Archive all completed and cancelled orders?')) {
+              window.hotelOrderService.clearCompletedOrders();
+              this.render();
+            }
+          });
+        }
+      }
+
+      getFilteredOrders() {
+        const all = window.hotelOrderService ? window.hotelOrderService.getAllOrders() : [];
+        if (this.currentFilter === 'active') {
+          return all.filter(o => o.status === 'pending' || o.status === 'preparing' || o.status === 'ready');
+        } else if (this.currentFilter === 'all') {
+          return all;
+        } else {
+          return all.filter(o => o.status === this.currentFilter);
+        }
+      }
+
+      updateMetrics() {
+        const all = window.hotelOrderService ? window.hotelOrderService.getAllOrders() : [];
+        const pendingCount = all.filter(o => o.status === 'pending').length;
+        const preparingCount = all.filter(o => o.status === 'preparing').length;
+        const readyCount = all.filter(o => o.status === 'ready').length;
+        
+        const activeOrders = all.filter(o => o.status === 'pending' || o.status === 'preparing' || o.status === 'ready');
+        const activeSum = activeOrders.reduce((sum, o) => sum + (o.totalAmount || 0), 0);
+
+        const elPending = document.getElementById('metricPendingCount');
+        const elPrep = document.getElementById('metricPreparingCount');
+        const elReady = document.getElementById('metricReadyCount');
+        const elTotal = document.getElementById('metricActiveTotal');
+
+        if (elPending) elPending.textContent = pendingCount;
+        if (elPrep) elPrep.textContent = preparingCount;
+        if (elReady) elReady.textContent = readyCount;
+        if (elTotal) elTotal.textContent = `${HOTEL_CONFIG.currency} ${activeSum.toLocaleString('en-KE')}`;
+      }
+
+      render() {
+        if (!this.grid) return;
+        this.updateMetrics();
+
+        const orders = this.getFilteredOrders();
+
+        if (orders.length === 0) {
+          this.grid.innerHTML = `
+            <div class="kds-empty">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+              </svg>
+              <h3 style="font-size:1.3rem; margin-bottom:0.4rem; color:#AAA;">No Orders in This View</h3>
+              <p>The kitchen screen is active and waiting for new guest orders.</p>
+              <button type="button" class="btn btn-outline-white btn-sm" style="margin-top:1rem;" onclick="kds.simulateSampleOrder()">
+                + Create a Sample Test Order
+              </button>
+            </div>
+          `;
+          return;
+        }
+
+        this.grid.innerHTML = orders.map(order => this.renderOrderCard(order)).join('');
+        this.bindCardActions();
+      }
+
+      renderOrderCard(order) {
+        const statusClass = `status-${order.status}`;
+        const badgeClass = `badge-status-${order.status}`;
+
+        const statusLabels = {
+          pending: '🔔 NEW / PENDING',
+          preparing: '👨‍🍳 IN KITCHEN',
+          ready: '✅ READY FOR GUEST',
+          completed: '📦 COMPLETED',
+          cancelled: '❌ CANCELLED'
+        };
+
+        const typeLabels = {
+          dine_in: '🍽️ DINE-IN',
+          takeaway: '🛍️ TAKEAWAY',
+          delivery: '🛵 DELIVERY'
+        };
+
+        // Time elapsed calculation
+        const orderTime = new Date(order.createdAt || Date.now());
+        const minutesAgo = Math.floor((Date.now() - orderTime.getTime()) / 60000);
+        const timeDisplay = minutesAgo < 1 ? 'Just now' : `${minutesAgo} mins ago`;
+
+        // Render Action Buttons based on status
+        let actionButtonsHtml = '';
+        if (order.status === 'pending') {
+          actionButtonsHtml = `
+            <button type="button" class="btn-kds btn-kds-accept" data-id="${order.id}" data-action="preparing">
+              👨‍🍳 Accept &amp; Start Cooking
+            </button>
+            <button type="button" class="btn-kds btn-kds-cancel" data-id="${order.id}" data-action="cancelled">
+              Reject Order
+            </button>
+          `;
+        } else if (order.status === 'preparing') {
+          actionButtonsHtml = `
+            <button type="button" class="btn-kds btn-kds-ready" data-id="${order.id}" data-action="ready">
+              ✅ Mark Food as Ready
+            </button>
+          `;
+        } else if (order.status === 'ready') {
+          const waMessage = encodeURIComponent(`Hello ${order.customer.name}, your food order #${order.id} from The Blaque Hotel is freshly cooked and ready for you!`);
+          const waUrl = `https://wa.me/${order.customer.phone.replace(/[^0-9]/g, '')}?text=${waMessage}`;
+
+          actionButtonsHtml = `
+            <button type="button" class="btn-kds btn-kds-complete" data-id="${order.id}" data-action="completed">
+              📦 Handover &amp; Complete
+            </button>
+            <a href="${waUrl}" target="_blank" class="btn-kds" style="background:#25D366; color:#FFF; text-decoration:none;">
+              💬 Notify Customer on WhatsApp
+            </a>
+          `;
+        } else {
+          actionButtonsHtml = `
+            <span style="font-size:0.8rem; color:#777; text-align:center;">Order archived</span>
+          `;
+        }
+
+        const itemsHtml = (order.items || []).map(item => `
+          <div class="kds-item-row">
+            <div>
+              <span class="kds-item-qty">${item.quantity}x</span>
+              <span class="kds-item-name">${item.name}</span>
+              ${item.note ? `<div style="font-size:0.8rem; color:#F4B942; margin-left:1.8rem;">Note: ${item.note}</div>` : ''}
+            </div>
+            <span style="color:#AAA; font-size:0.85rem;">${HOTEL_CONFIG.currency} ${item.subtotal ? item.subtotal.toLocaleString('en-KE') : (item.price * item.quantity).toLocaleString('en-KE')}</span>
+          </div>
+        `).join('');
+
+        return `
+          <article class="order-kds-card ${statusClass}" data-id="${order.id}">
+            <div class="order-kds-header">
+              <span class="order-kds-ref">#${order.id}</span>
+              <span class="order-kds-badge ${badgeClass}">${statusLabels[order.status] || order.status}</span>
+            </div>
+
+            <div class="order-kds-type">
+              <span>${typeLabels[order.orderType] || order.orderType}</span>
+              <span style="color:#BBB; font-size:0.75rem;">${timeDisplay}</span>
+            </div>
+
+            <div class="order-kds-body">
+              <div class="customer-info-box">
+                <div>
+                  <strong>${order.customer.name}</strong>
+                  <div style="font-size:0.8rem; color:#888;">${order.serviceDetail || ''}</div>
+                </div>
+                <div>
+                  <a href="tel:${order.customer.phone}" style="color:var(--color-accent); font-weight:700; text-decoration:none;">
+                    📞 ${order.customer.phone}
+                  </a>
+                </div>
+              </div>
+
+              <div class="kds-items-list">
+                ${itemsHtml}
+              </div>
+
+              ${order.instructions ? `
+                <div class="kds-instructions">
+                  <strong>Special Instructions:</strong><br />
+                  ${order.instructions}
+                </div>
+              ` : ''}
+            </div>
+
+            <div class="order-kds-footer">
+              <div class="kds-total-row">
+                <span style="font-size:0.9rem; color:#999;">Total:</span>
+                <span style="color:var(--color-secondary);">${HOTEL_CONFIG.currency} ${Number(order.totalAmount).toLocaleString('en-KE')}</span>
+              </div>
+              <div class="kds-action-btns">
+                ${actionButtonsHtml}
+              </div>
+            </div>
+          </article>
+        `;
+      }
+
+      bindCardActions() {
+        this.grid.querySelectorAll('.btn-kds').forEach(btn => {
+          btn.addEventListener('click', (e) => {
+            const id = e.currentTarget.getAttribute('data-id');
+            const newStatus = e.currentTarget.getAttribute('data-action');
+            if (id && newStatus && window.hotelOrderService) {
+              window.hotelOrderService.updateOrderStatus(id, newStatus);
+              this.showToast(`Order #${id} marked as ${newStatus.toUpperCase()}`);
+              this.render();
+            }
+          });
+        });
+      }
+
+      simulateSampleOrder() {
+        const sampleDishes = [
+          { id: 'mm-03', name: 'Swahili Spiced Beef Pilau', price: 800, quantity: 2, note: 'Extra kachumbari' },
+          { id: 'ff-01', name: 'Blaque Gourmet Beef Burger', price: 750, quantity: 1, note: 'Melted cheddar' },
+          { id: 'bv-03', name: 'Cold-Pressed Fresh Tropical Juice', price: 350, quantity: 2, note: 'Passion fruit' }
+        ];
+
+        const sampleCustomers = [
+          { name: 'Sarah Wanjiku', phone: '0722123456', orderType: 'dine_in', extraDetail: 'Table 6 (Garden Terrace)', instructions: 'Please serve beverages first' },
+          { name: 'David Kiprono', phone: '0733987654', orderType: 'takeaway', extraDetail: 'Pickup in 15 mins', instructions: 'Pack with extra serviettes' },
+          { name: 'Amina Mohamed', phone: '0711555444', orderType: 'delivery', extraDetail: 'Wood Avenue Towers, Apt 4B', instructions: 'Gate code 4092, call upon arrival' }
+        ];
+
+        const randomCust = sampleCustomers[Math.floor(Math.random() * sampleCustomers.length)];
+        const subtotal = sampleDishes.reduce((sum, d) => sum + (d.price * d.quantity), 0);
+
+        if (window.hotelOrderService) {
+          const order = window.hotelOrderService.createOrder({
+            customer: randomCust,
+            items: sampleDishes,
+            subtotal: subtotal
+          });
+          if (this.soundEnabled) {
+            window.hotelOrderService.playOrderChime();
+          }
+          this.showToast(`Simulated Order #${order.id} received!`, 'success');
+          this.render();
+        }
+      }
+
+      showToast(message, type = 'default') {
+        const container = document.getElementById('kdsToastContainer');
+        if (!container) return;
+
+        const toast = document.createElement('div');
+        toast.className = `toast ${type === 'success' ? 'toast-success' : ''}`;
+        toast.style.backgroundColor = '#202124';
+        toast.style.color = '#FFF';
+        toast.style.borderLeft = '4px solid var(--color-secondary)';
+        toast.innerHTML = `<span>${message}</span>`;
+        container.appendChild(toast);
+
+        setTimeout(() => {
+          toast.remove();
+        }, 3000);
+      }
+    }
+
+    let kds;
+    document.addEventListener('DOMContentLoaded', () => {
+      kds = new KitchenDisplay();
+      window.kds = kds;
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="blaqueGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FF6332" />
+      <stop offset="100%" stop-color="#F4B942" />
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="16" fill="#202124" />
+  <circle cx="32" cy="32" r="26" fill="none" stroke="url(#blaqueGrad)" stroke-width="2.5" stroke-dasharray="6 4" />
+  <!-- Fork and Knife Culinary Cloche Silhouette -->
+  <path d="M22 20 L22 42 M19 20 L25 20 M19 28 L25 28" stroke="url(#blaqueGrad)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+  <path d="M42 20 Q44 32 40 44" stroke="#FFF9F2" stroke-width="2.5" stroke-linecap="round" />
+  <!-- Flame/Clock Accent -->
+  <circle cx="32" cy="24" r="5" fill="#FF6332" />
+  <path d="M32 18 Q34 22 32 26 Q30 22 32 18" fill="#F4B942" />
+  <circle cx="32" cy="36" r="2" fill="#25D366" />
+</svg>

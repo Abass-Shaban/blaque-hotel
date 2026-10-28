@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Blaque Hotel & 24/7 Bistro | Delicious Food, Anytime</title>
+  <meta name="description" content="Experience round-the-clock dining at The Blaque Hotel. Enjoy freshly prepared Kenyan meals, fast food, snacks, and refreshing beverages 24/7 in Nairobi." />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  
+  <!-- CSS Stylesheet -->
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ==========================================
+       TOP ANNOUNCEMENT BAR
+       ========================================== -->
+  <aside class="topbar" aria-label="Quick contact and operating hours">
+    <div class="container topbar-content">
+      <div class="topbar-left">
+        <span class="topbar-item">
+          <span class="pulse-dot"></span>
+          <strong>24/7 Kitchen Active:</strong> Serving breakfast, lunch, dinner & midnight cravings
+        </span>
+      </div>
+      <div class="topbar-right">
+        <span class="topbar-item">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+          </svg>
+          <a href="tel:+254700123456" class="data-hotel-phone">+254 700 123 456</a>
+        </span>
+        <span class="topbar-item">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#25D366" stroke-width="2">
+            <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+          </svg>
+          <a href="#" class="data-hotel-whatsapp-link">WhatsApp Orders Active</a>
+        </span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ==========================================
+       MAIN NAVIGATION BAR
+       ========================================== -->
+  <header class="navbar">
+    <div class="container navbar-container">
+      <a href="index.html" class="brand-logo" aria-label="The Blaque Hotel Home">
+        <div class="logo-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M18 8h1a4 4 0 0 1 0 8h-1"></path>
+            <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path>
+            <line x1="6" y1="1" x2="6" y2="4"></line>
+            <line x1="10" y1="1" x2="10" y2="4"></line>
+            <line x1="14" y1="1" x2="14" y2="4"></line>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <span class="brand-name">THE BLAQUE</span>
+          <span class="brand-tagline">24/7 Hotel & Bistro</span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav Menu -->
+      <nav class="nav-menu" aria-label="Primary Navigation">
+        <a href="index.html" class="nav-link active">Home</a>
+        <a href="menu.html" class="nav-link">Our Menu</a>
+        <a href="menu.html?cat=specials" class="nav-link">Specials</a>
+        <a href="about.html" class="nav-link">About Us</a>
+        <a href="#reviews" class="nav-link">Reviews</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </nav>
+
+      <!-- Nav Actions -->
+      <div class="nav-actions">
+        <!-- Cart Button -->
+        <button type="button" class="cart-btn open-cart-btn" aria-label="View shopping cart">
+          <div class="cart-icon-wrapper">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="9" cy="21" r="1"></circle>
+              <circle cx="20" cy="21" r="1"></circle>
+              <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+            </svg>
+            <span class="cart-count-badge" id="navCartCount">0</span>
+          </div>
+          <span class="cart-btn-text">Cart</span>
+        </button>
+
+        <!-- Mobile Hamburger Button -->
+        <button type="button" class="menu-toggle" id="mobileMenuToggle" aria-label="Toggle navigation menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Overlay -->
+  <div class="mobile-nav-overlay" id="mobileNavOverlay"></div>
+  <aside class="mobile-nav-drawer" id="mobileDrawer" aria-label="Mobile Navigation">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 1rem;">
+      <div class="brand-text">
+        <span class="brand-name" style="font-size:1.2rem;">THE BLAQUE</span>
+        <span class="brand-tagline">24/7 Hotel Bistro</span>
+      </div>
+      <button type="button" id="mobileDrawerClose" style="font-size:1.5rem; color:var(--color-text); padding:0.4rem;">&times;</button>
+    </div>
+
+    <div class="badge-24h" style="align-self: flex-start; margin-bottom: 1rem;">
+      <span class="pulse-dot"></span> Kitchen Open Right Now
+    </div>
+
+    <nav class="mobile-nav-links">
+      <a href="index.html" class="mobile-nav-link active">Home</a>
+      <a href="menu.html" class="mobile-nav-link">Full Menu &amp; Order</a>
+      <a href="menu.html?cat=specials" class="mobile-nav-link">Daily Specials</a>
+      <a href="about.html" class="mobile-nav-link">About Hotel &amp; Kitchen</a>
+      <a href="contact.html" class="mobile-nav-link">Location &amp; Contact</a>
+    </nav>
+
+    <div style="margin-top: auto; display:flex; flex-direction:column; gap:0.8rem; padding-top:1.5rem; border-top:1px solid var(--color-border);">
+      <button type="button" class="btn btn-primary btn-block open-cart-btn">
+        View Cart (<span class="cart-count-badge" style="position:static; display:inline-flex;">0</span>)
+      </button>
+      <a href="#" class="btn btn-whatsapp btn-block data-hotel-whatsapp-link">
+        Chat on WhatsApp
+      </a>
+      <a href="tel:+254700123456" class="btn btn-outline btn-block data-hotel-phone">
+        Call Kitchen
+      </a>
+    </div>
+  </aside>
+
+  <!-- ==========================================
+       HERO SECTION
+       ========================================== -->
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div class="hero-text-content">
+          <div class="hero-badge-wrap">
+            <div class="badge-24h">
+              <span class="pulse-dot"></span>
+              <span>24/7 Non-Stop Service</span>
+            </div>
+            <span style="font-size:0.85rem; color:var(--color-accent); font-weight:600;">
+              Breakfast • Lunch • Dinner • Late Night
+            </span>
+          </div>
+
+          <h1 class="hero-title">
+            Delicious Food, Anytime. <span>We're Here 24/7!</span>
+          </h1>
+
+          <p class="hero-description">
+            Enjoy freshly prepared meals, refreshing beverages, and exceptional hospitality whenever your cravings strike.
+          </p>
+
+          <div class="hero-actions">
+            <a href="menu.html" class="btn btn-primary btn-lg">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="8" y1="6" x2="21" y2="6"></line>
+                <line x1="8" y1="12" x2="21" y2="12"></line>
+                <line x1="8" y1="18" x2="21" y2="18"></line>
+                <line x1="3" y1="6" x2="3.01" y2="6"></line>
+                <line x1="3" y1="12" x2="3.01" y2="12"></line>
+                <line x1="3" y1="18" x2="3.01" y2="18"></line>
+              </svg>
+              Explore Our Menu
+            </a>
+            <button type="button" class="btn btn-accent btn-lg open-cart-btn">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="9" cy="21" r="1"></circle>
+                <circle cx="20" cy="21" r="1"></circle>
+                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+              </svg>
+              Order Now
+            </button>
+            <a href="#" class="btn btn-whatsapp btn-lg data-hotel-whatsapp-link">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2z"></path>
+              </svg>
+              Contact Us on WhatsApp
+            </a>
+          </div>
+
+          <div class="hero-highlights">
+            <div class="highlight-item">
+              <span class="highlight-num">24 / 7</span>
+              <span class="highlight-label">Hot Kitchen &amp; Bar Open Round the Clock</span>
+            </div>
+            <div class="highlight-item">
+              <span class="highlight-num">15-20m</span>
+              <span class="highlight-label">Average Preparation &amp; Hot Serving Time</span>
+            </div>
+            <div class="highlight-item">
+              <span class="highlight-num">3 Options</span>
+              <span class="highlight-label">Dine-In • Takeaway • Nairobi Delivery</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hero Visual Showcase -->
+        <div class="hero-visual">
+          <div class="hero-card-featured">
+            <span class="hero-float-badge">Midnight Favorite</span>
+            <img 
+              src="https://images.unsplash.com/photo-1633945274405-b6c8069047b0?auto=format&fit=crop&w=800&q=80" 
+              alt="Swahili Spiced Beef Pilau" 
+              class="hero-card-img" 
+            />
+            <div class="hero-card-content">
+              <div class="hero-card-info">
+                <h4>Swahili Spiced Beef Pilau</h4>
+                <p>Aromatic spiced rice, tender beef morsels &amp; fresh kachumbari</p>
+              </div>
+              <div class="hero-card-price">KES 800</div>
+            </div>
+            <div style="margin-top: 1rem; display:flex; gap:0.6rem;">
+              <button type="button" class="btn btn-primary btn-sm btn-block" onclick="window.hotelCart && window.hotelCart.addItem({id:'mm-03', name:'Swahili Spiced Beef Pilau', price:800, image:'https://images.unsplash.com/photo-1633945274405-b6c8069047b0?auto=format&fit=crop&w=800&q=80', categoryName:'Main Meals'})">
+                Add to Cart +
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         24-HOUR SERVICE PROMISE STRIP
+         ========================================== -->
+    <section class="service-strip" aria-label="Our core service commitments">
+      <div class="container">
+        <div class="strip-grid">
+          <div class="strip-item">
+            <div class="strip-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+              </svg>
+            </div>
+            <div class="strip-text">
+              <h4>Always Open 24/7</h4>
+              <p>Hot, fresh meals cooked to order at 3 AM or 3 PM.</p>
+            </div>
+          </div>
+
+          <div class="strip-item">
+            <div class="strip-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+                <path d="M2 17l10 5 10-5"></path>
+                <path d="M2 12l10 5 10-5"></path>
+              </svg>
+            </div>
+            <div class="strip-text">
+              <h4>Fresh Local Produce</h4>
+              <p>Finest Kenyan beef, farm chicken &amp; fresh vegetables.</p>
+            </div>
+          </div>
+
+          <div class="strip-item">
+            <div class="strip-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="1" y="3" width="15" height="13"></rect>
+                <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
+                <circle cx="5.5" cy="18.5" r="2.5"></circle>
+                <circle cx="18.5" cy="18.5" r="2.5"></circle>
+              </svg>
+            </div>
+            <div class="strip-text">
+              <h4>Dine-In, Pickup &amp; Delivery</h4>
+              <p>Dine at our bistro, grab takeaway or arrange dispatch.</p>
+            </div>
+          </div>
+
+          <div class="strip-item">
+            <div class="strip-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+              </svg>
+            </div>
+            <div class="strip-text">
+              <h4>Instant WhatsApp Checkout</h4>
+              <p>1-tap formatted order sent directly to our kitchen staff.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         POPULAR MEALS SHOWCASE
+         ========================================== -->
+    <section class="section" id="popular">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Chef's Highlights</span>
+          <h2 class="section-title">Popular Meals You'll Love</h2>
+          <p class="section-subtitle">
+            From hearty Swahili comfort food to handcrafted burgers and morning classics, explore what our guests order most.
+          </p>
+        </div>
+
+        <div class="menu-grid" id="featuredDishesContainer">
+          <!-- Rendered dynamically by main.js -->
+        </div>
+
+        <div style="text-align: center; margin-top: 3rem;">
+          <a href="menu.html" class="btn btn-outline btn-lg">
+            <span>Explore Complete 24/7 Menu (24 Items)</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         DAILY SPECIALS & MIDNIGHT CRAVINGS
+         ========================================== -->
+    <section class="section section-alt" id="specials">
+      <div class="container">
+        <div class="specials-card">
+          <div class="specials-content">
+            <span class="section-tag dark" style="margin-bottom: 0.8rem;">Midnight &amp; Daily Special</span>
+            <h3>Late Night Craving? <span>The Blaque Night Combo</span></h3>
+            <p class="specials-desc">
+              Whether working the late shift, arriving on a night flight, or catching up with friends, our kitchen fires up prime grilled burgers, seasoned fries, and artisan shakes until sunrise.
+            </p>
+            <div class="specials-features">
+              <div class="specials-feature-item">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path>
+                </svg>
+                <span>100% Kenyan Prime Beef or Zesty Crispy Chicken</span>
+              </div>
+              <div class="specials-feature-item">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path>
+                </svg>
+                <span>Generous Golden Herb Fries &amp; House Mayo Dip</span>
+              </div>
+              <div class="specials-feature-item">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path>
+                </svg>
+                <span>Free Upgrade to Masala Chips on Midnight Orders (12 AM - 5 AM)</span>
+              </div>
+            </div>
+
+            <div style="display:flex; align-items:center; gap: 1.5rem; flex-wrap: wrap;">
+              <div>
+                <span style="font-size: 0.85rem; color: rgba(255,255,255,0.7); display:block;">Special Combo Deal</span>
+                <span style="font-size: 1.6rem; font-weight:800; color:var(--color-accent);">KES 950</span>
+              </div>
+              <a href="menu.html?cat=specials" class="btn btn-secondary" style="background-color: var(--color-secondary); color:#fff;">
+                Order Specials Now
+              </a>
+            </div>
+          </div>
+
+          <div class="specials-img-wrap">
+            <span class="specials-badge">Save KES 250</span>
+            <img 
+              src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=800&q=80" 
+              alt="Blaque Midnight Burger Combo" 
+              loading="lazy" 
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         ABOUT OUR HOTEL & FOOD PREPARATION
+         ========================================== -->
+    <section class="section" id="about">
+      <div class="container about-grid">
+        <div class="about-images-grid">
+          <div class="about-img-box">
+            <img 
+              src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=600&q=80" 
+              alt="The Blaque Hotel Dining Room" 
+              loading="lazy" 
+            />
+          </div>
+          <div class="about-img-box">
+            <img 
+              src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?auto=format&fit=crop&w=600&q=80" 
+              alt="Chef preparing fresh food in kitchen" 
+              loading="lazy" 
+            />
+          </div>
+        </div>
+
+        <div class="about-text">
+          <span class="section-tag accent">About Our Hospitality</span>
+          <h2>Crafted With Care, Served With Kenyan Warmth</h2>
+          <p>
+            At <strong>The Blaque Hotel &amp; 24/7 Bistro</strong>, we believe hunger shouldn't follow a strict timetable. Whether you need an energizing sunrise breakfast of spiced Kenyan chai and golden mandazi, a rich Swahili beef pilau for lunch, or a midnight burger after a long shift, our kitchen never sleeps.
+          </p>
+          <p>
+            Every dish is cooked fresh from scratch using locally sourced ingredients, premium cuts, and time-tested spices that celebrate Nairobi's diverse culinary heritage.
+          </p>
+
+          <div class="about-pillars">
+            <div class="pillar-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+              </svg>
+              <div>
+                <h5>Hygienic 24/7 Kitchen</h5>
+                <p>Strict food safety standards round the clock.</p>
+              </div>
+            </div>
+
+            <div class="pillar-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+              </svg>
+              <div>
+                <h5>Warm &amp; Secure Ambience</h5>
+                <p>Guarded parking and relaxing dining terrace.</p>
+              </div>
+            </div>
+
+            <div class="pillar-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+              </svg>
+              <div>
+                <h5>Advance Pre-Orders</h5>
+                <p>Book meals in advance for meetings or arrivals.</p>
+              </div>
+            </div>
+
+            <div class="pillar-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+              </svg>
+              <div>
+                <h5>WhatsApp Confirmation</h5>
+                <p>Immediate personal touch with our team.</p>
+              </div>
+            </div>
+          </div>
+
+          <a href="about.html" class="btn btn-outline">
+            Read Our Full Story
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         CUSTOMER REVIEWS & TESTIMONIALS
+         ========================================== -->
+    <section class="section section-alt" id="reviews">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Guest Experiences</span>
+          <h2 class="section-title">What Our Guests Say</h2>
+          <p class="section-subtitle">
+            See how Nairobi locals, travelers, and late-night foodies rate our 24/7 food and beverage services.
+          </p>
+        </div>
+
+        <div class="reviews-grid">
+          <!-- Review 1 -->
+          <div class="review-card">
+            <div class="review-rating">
+              <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+              <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+              <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+              <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+              <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+            </div>
+            <p class="review-text">
+              "Landed at JKIA at 2:00 AM and was desperate for a proper meal. Blaque Hotel's kitchen was fully active. The Swahili beef pilau was piping hot and seasoned to perfection. A lifesaver!"
+            </p>
+            <div class="review-author">
+              <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=120&q=80" alt="Sarah Wanjiku" class="author-avatar" loading="lazy" />
+              <div class="author-details">
+                <h5>Sarah Wanjiku</h5>
+                <span>Business Traveler • Kilimani</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Review 2 -->
+          <div class="review-card">
+            <div class="review-rating">
+              <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+              <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+              <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+              <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+              <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+            </div>
+            <p class="review-text">
+              "Their WhatsApp ordering workflow is unbelievably smooth. I picked up two Gourmet Beef Burgers and Masala Fries on my way home from an event. Packed securely, hot, and delicious."
+            </p>
+            <div class="review-author">
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=120&q=80" alt="Brian Ochieng" class="author-avatar" loading="lazy" />
+              <div class="author-details">
+                <h5>Brian Ochieng</h5>
+                <span>Software Consultant</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Review 3 -->
+          <div class="review-card">
+            <div class="review-rating">
+              <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+              <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+              <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+              <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+              <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+            </div>
+            <p class="review-text">
+              "Best early breakfast in Kilimani. The spiced tea with fluffy mandazi brings back childhood memories, while my partner loved the Full English breakfast. Courteous staff and lovely garden seating."
+            </p>
+            <div class="review-author">
+              <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=120&q=80" alt="Fatima Hassan" class="author-avatar" loading="lazy" />
+              <div class="author-details">
+                <h5>Fatima Hassan</h5>
+                <span>Hotel Resident Guest</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         LOCATION, MAP & CONTACT SECTION
+         ========================================== -->
+    <section class="section" id="location">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Find Us Anytime</span>
+          <h2 class="section-title">Visit The Blaque Hotel</h2>
+          <p class="section-subtitle">
+            Centrally situated on Argwings Kodhek Road with guarded round-the-clock parking, welcoming dining halls, and outdoor lounge seating.
+          </p>
+        </div>
+
+        <div class="location-grid">
+          <div class="contact-card-box">
+            <h3 style="font-size:1.35rem; font-weight:800; color:var(--color-primary); margin-bottom:0.5rem;">
+              Hotel &amp; Dining Contacts
+            </h3>
+
+            <div class="contact-detail-row">
+              <div class="contact-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                  <circle cx="12" cy="10" r="3"></circle>
+                </svg>
+              </div>
+              <div>
+                <h5>Physical Address</h5>
+                <p class="data-hotel-address">Argwings Kodhek Road, Kilimani, Nairobi, Kenya</p>
+                <a href="#" class="data-hotel-maps-link" style="color:var(--color-secondary); font-weight:600; font-size:0.85rem;">
+                  Open in Google Maps &rarr;
+                </a>
+              </div>
+            </div>
+
+            <div class="contact-detail-row">
+              <div class="contact-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                </svg>
+              </div>
+              <div>
+                <h5>Direct Telephone</h5>
+                <p><a href="tel:+254700123456" class="data-hotel-phone">+254 700 123 456</a></p>
+                <p><a href="tel:+254711789012" class="data-hotel-phone-sec">+254 711 789 012</a></p>
+              </div>
+            </div>
+
+            <div class="contact-detail-row">
+              <div class="contact-icon" style="background-color: var(--color-success-bg); color: var(--color-whatsapp);">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2z"></path>
+                </svg>
+              </div>
+              <div>
+                <h5>24/7 WhatsApp Hotline</h5>
+                <p>Chat directly with front desk &amp; kitchen staff.</p>
+                <a href="#" class="btn btn-whatsapp btn-sm data-hotel-whatsapp-link" style="margin-top:0.4rem;">
+                  Chat On WhatsApp
+                </a>
+              </div>
+            </div>
+
+            <div class="contact-detail-row">
+              <div class="contact-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <polyline points="12 6 12 12 16 14"></polyline>
+                </svg>
+              </div>
+              <div>
+                <h5>Kitchen Hours</h5>
+                <p><strong class="data-hotel-hours">Open 24 Hours / 7 Days a Week</strong></p>
+                <p style="font-size:0.8rem; color:var(--color-text-light);">No closing days, including public holidays.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="map-container">
+            <iframe 
+              class="data-hotel-maps-embed"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15955.163351984218!2d36.7844007!3d-1.2920659!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f109867c4ec11%3A0x6bcfd35c59f0f9b!2sKilimani%2C%20Nairobi!5e0!3m2!1sen!2ske!4v1700000000000!5m2!1sen!2ske" 
+              allowfullscreen="" 
+              loading="lazy" 
+              referrerpolicy="no-referrer-when-downgrade"
+              title="The Blaque Hotel Location Map">
+            </iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         FREQUENTLY ASKED QUESTIONS (FAQ)
+         ========================================== -->
+    <section class="section section-alt" id="faq">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Got Questions?</span>
+          <h2 class="section-title">Frequently Asked Questions</h2>
+          <p class="section-subtitle">
+            Everything you need to know about dining, late night orders, delivery, and advance reservations.
+          </p>
+        </div>
+
+        <div class="faq-list">
+          <div class="faq-item">
+            <button type="button" class="faq-question">
+              <span>Is your kitchen truly open 24 hours a day?</span>
+              <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            <div class="faq-answer">
+              <p>Yes! Our kitchen operates 24/7/365. You can walk in, call, or order via WhatsApp at 3:00 AM, midday, or morning. Note that certain elaborate whole fish or slow-braised cuts may have peak preparation times, but hearty mains, burgers, breakfast, and beverages are continuously available.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button type="button" class="faq-question">
+              <span>Can non-residents dine at The Blaque Hotel?</span>
+              <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            <div class="faq-answer">
+              <p>Absolutely. Our restaurant, garden terrace, and coffee lounge are open to walk-in guests, neighborhood residents, and late-night travelers around the clock. Secure parking with 24-hour guards is provided on premise.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button type="button" class="faq-question">
+              <span>How does WhatsApp ordering work?</span>
+              <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            <div class="faq-answer">
+              <p>Simply select your items on this website, view your cart, choose Dine-In, Takeaway, or Delivery, and tap "Order via WhatsApp". The website instantly generates a complete itemized message with prices and your instructions. Our staff reviews and immediately confirms preparation time.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button type="button" class="faq-question">
+              <span>Do you deliver food at night?</span>
+              <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            <div class="faq-answer">
+              <p>We facilitate delivery enquiries within Kilimani, Westlands, Upper Hill, Hurlingham, and surrounding Nairobi estates. During late night hours, rider availability varies, so our team will advise exact dispatch times and delivery fees over WhatsApp upon receiving your order.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button type="button" class="faq-question">
+              <span>Can I place an advance food order for an event or morning meeting?</span>
+              <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            <div class="faq-answer">
+              <p>Yes. You can place advance orders hours or days ahead. Indicate your desired pickup or dining time in the special instructions field or message us directly on WhatsApp for custom group catering menus.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==========================================
+       SHOPPING CART DRAWER (SHARED)
+       ========================================== -->
+  <div class="cart-overlay" id="cartOverlay"></div>
+  <aside class="cart-drawer" id="cartDrawer" aria-label="Shopping Cart">
+    <div class="cart-header">
+      <div class="cart-header-title">
+        <h3>Your Order</h3>
+        <span class="cart-tag">24/7 Kitchen</span>
+      </div>
+      <button type="button" class="cart-close-btn" id="cartCloseBtn" aria-label="Close cart">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+
+    <div class="cart-body">
+      <!-- Empty State -->
+      <div class="cart-empty-state" id="cartEmptyState">
+        <svg class="cart-empty-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <circle cx="9" cy="21" r="1"></circle>
+          <circle cx="20" cy="21" r="1"></circle>
+          <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+        </svg>
+        <h4>Your Cart is Empty</h4>
+        <p>Explore our delicious round-the-clock menu to add food, snacks, and beverages.</p>
+        <a href="menu.html" class="btn btn-primary btn-sm" onclick="window.hotelCart && window.hotelCart.closeDrawer();">
+          Browse Menu Now
+        </a>
+      </div>
+
+      <!-- Item List -->
+      <div class="cart-items-list" id="cartItemsList"></div>
+
+      <!-- Customer & Service Form -->
+      <form class="cart-form-section" id="cartOrderForm" onsubmit="event.preventDefault();">
+        <div class="cart-form-group">
+          <label>Order Type</label>
+          <div class="order-type-chips">
+            <button type="button" class="order-type-chip active" data-type="dine_in">🍽️ Dine-In</button>
+            <button type="button" class="order-type-chip" data-type="takeaway">🛍️ Takeaway</button>
+            <button type="button" class="order-type-chip" data-type="delivery">🛵 Delivery</button>
+          </div>
+        </div>
+
+        <div class="cart-form-group" id="dineInDetails">
+          <label for="tableNumber">Table No. or Hotel Room No. (Optional)</label>
+          <input type="text" id="tableNumber" placeholder="e.g. Table 4 / Room 208" />
+        </div>
+
+        <div class="cart-form-group" id="takeawayDetails" style="display:none;">
+          <label for="pickupTime">Estimated Pickup Time</label>
+          <input type="text" id="pickupTime" placeholder="e.g. ASAP (~20 mins) or 10:30 PM" />
+        </div>
+
+        <div class="cart-form-group" id="deliveryDetails" style="display:none;">
+          <label for="deliveryAddress">Delivery Address &amp; Landmark</label>
+          <input type="text" id="deliveryAddress" placeholder="Building, Street, Landmark in Nairobi" />
+        </div>
+
+        <div class="cart-form-group">
+          <label for="customerName">Your Full Name *</label>
+          <input type="text" id="customerName" placeholder="e.g. Alex Mwangi" required />
+        </div>
+
+        <div class="cart-form-group">
+          <label for="customerPhone">Phone Number *</label>
+          <input type="tel" id="customerPhone" placeholder="e.g. 0712 345 678" required />
+        </div>
+
+        <div class="cart-form-group">
+          <label for="orderNotes">Special Instructions / Allergies</label>
+          <textarea id="orderNotes" rows="2" placeholder="e.g. No onions, extra chili sauce, mild spice..."></textarea>
+        </div>
+      </form>
+    </div>
+
+    <div class="cart-footer" id="cartFooter">
+      <div class="cart-summary-line">
+        <span>Subtotal</span>
+        <span id="cartSubtotalAmount">KES 0</span>
+      </div>
+      <div class="cart-summary-line total">
+        <span>Total Amount</span>
+        <span id="cartTotalAmount">KES 0</span>
+      </div>
+
+      <p class="cart-disclaimer">
+        ⚠️ Orders are freshly cooked and subject to kitchen acknowledgement.
+      </p>
+
+      <button type="button" class="btn btn-whatsapp btn-block" id="btnSubmitWhatsApp">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2z"></path>
+        </svg>
+        Order via WhatsApp
+      </button>
+
+      <button type="button" class="btn btn-outline btn-block btn-sm" id="btnSubmitDirect">
+        Submit Order on Website
+      </button>
+    </div>
+  </aside>
+
+  <!-- ==========================================
+       ORDER CONFIRMATION VOUCHER MODAL
+       ========================================== -->
+  <div class="modal-overlay" id="voucherModal" aria-modal="true" role="dialog">
+    <div class="modal-content">
+      <button type="button" class="modal-close-btn" id="voucherCloseBtn" aria-label="Close modal">&times;</button>
+      <div class="voucher-box">
+        <div class="voucher-header">
+          <div class="voucher-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+          </div>
+          <h3 style="font-family: var(--font-heading); font-size:1.6rem; color:var(--color-primary); margin-bottom:0.3rem;">
+            Order Submitted!
+          </h3>
+          <p style="color:var(--color-text-muted); font-size:0.92rem;">
+            Here is your digital kitchen order voucher:
+          </p>
+          <div class="voucher-ref" id="voucherOrderRef">#BQ-000000</div>
+          <div style="font-size:0.8rem; color:var(--color-text-light); margin-top:0.4rem;" id="voucherOrderTime">Just now</div>
+        </div>
+
+        <div class="voucher-alert">
+          <strong>⚠️ Status: PENDING ACKNOWLEDGEMENT</strong><br />
+          An order is not confirmed until the hotel kitchen acknowledges it. Please confirm with our staff via WhatsApp or telephone to initiate preparation.
+        </div>
+
+        <div style="text-align:left; font-size:0.88rem; margin:1rem 0; padding:0.8rem; background:var(--color-bg); border-radius:var(--radius-sm);">
+          <div><strong>Customer:</strong> <span id="voucherCustomerInfo">-</span></div>
+          <div style="margin-top:0.3rem;"><strong>Service:</strong> <span id="voucherOrderType">-</span></div>
+        </div>
+
+        <table class="voucher-summary-table">
+          <thead>
+            <tr>
+              <th>Dish</th>
+              <th style="text-align:center;">Qty</th>
+              <th style="text-align:right;">Subtotal</th>
+            </tr>
+          </thead>
+          <tbody id="voucherItemsTable"></tbody>
+        </table>
+
+        <div style="display:flex; justify-content:space-between; align-items:center; padding-top:0.8rem; border-top:2px solid var(--color-border); font-size:1.15rem; font-weight:800;">
+          <span>Total:</span>
+          <span id="voucherOrderTotal" style="color:var(--color-secondary);">KES 0</span>
+        </div>
+
+        <div class="voucher-actions">
+          <button type="button" class="btn btn-whatsapp btn-block" id="voucherWhatsAppLink">
+            Send This Voucher via WhatsApp
+          </button>
+          <a href="tel:+254700123456" class="btn btn-outline btn-block data-hotel-phone">
+            Call Front Desk to Confirm
+          </a>
+          <button type="button" class="btn btn-outline btn-block btn-sm" id="voucherDoneBtn">
+            Done / Close Voucher
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       FLOATING ACTION BUTTONS (MOBILE ASSIST)
+       ========================================== -->
+  <aside class="floating-actions" aria-label="Emergency and Quick Contact">
+    <a href="#" class="fab-btn fab-whatsapp data-hotel-whatsapp-link" title="Chat on WhatsApp" aria-label="Chat on WhatsApp">
+      <svg viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2z"></path>
+      </svg>
+    </a>
+    <a href="tel:+254700123456" class="fab-btn fab-call data-hotel-phone" title="Call Hotel Front Desk" aria-label="Call Hotel Front Desk">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+      </svg>
+    </a>
+  </aside>
+
+  <!-- ==========================================
+       FOOTER
+       ========================================== -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <h3 class="data-hotel-name">The Blaque Hotel &amp; 24/7 Bistro</h3>
+        <p>
+          Delicious food, refreshing beverages, and warm hospitality round the clock. Proudly serving Kilimani and Nairobi with dine-in, takeaway, and late-night culinary excellence.
+        </p>
+        <div class="footer-socials">
+          <a href="#" class="social-icon data-social-facebook" aria-label="Facebook">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+          </a>
+          <a href="#" class="social-icon data-social-instagram" aria-label="Instagram">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+          </a>
+          <a href="#" class="social-icon data-social-tiktok" aria-label="TikTok">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 3 15.68 6.34 6.34 0 0 0 9.35 22a6.33 6.33 0 0 0 6.33-6.32V8.75a8.16 8.16 0 0 0 4.91 1.62v-3.68z"></path></svg>
+          </a>
+          <a href="#" class="social-icon data-social-twitter" aria-label="Twitter">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Menu Categories</h4>
+        <div class="footer-links">
+          <a href="menu.html?cat=breakfast">Breakfast Classics</a>
+          <a href="menu.html?cat=main_meals">Hearty Main Meals</a>
+          <a href="menu.html?cat=fast_food">Fast Food &amp; Snacks</a>
+          <a href="menu.html?cat=beverages">Hot &amp; Cold Beverages</a>
+          <a href="menu.html?cat=specials">Chef's Daily Specials</a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Quick Navigation</h4>
+        <div class="footer-links">
+          <a href="index.html">Home</a>
+          <a href="menu.html">Full Menu &amp; Ordering</a>
+          <a href="about.html">About The Hotel</a>
+          <a href="#reviews">Customer Reviews</a>
+          <a href="contact.html">Location &amp; Directions</a>
+          <a href="#faq">Frequently Asked Questions</a>
+          <a href="kitchen.html" style="color:var(--color-accent); font-weight:700;">👨‍🍳 Kitchen Order Screen (KDS)</a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>24-Hour Hospitality</h4>
+        <div class="footer-info-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"></circle>
+            <polyline points="12 6 12 12 16 14"></polyline>
+          </svg>
+          <div>
+            <strong>Hours:</strong> Open 24/7 All Year
+          </div>
+        </div>
+        <div class="footer-info-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+            <circle cx="12" cy="10" r="3"></circle>
+          </svg>
+          <div class="data-hotel-address">
+            Argwings Kodhek Road, Kilimani, Nairobi
+          </div>
+        </div>
+        <div class="footer-info-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+          </svg>
+          <div>
+            <a href="tel:+254700123456" class="data-hotel-phone">+254 700 123 456</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <div>
+        &copy; <span id="currentYear">2026</span> <strong class="data-hotel-name">The Blaque Hotel &amp; 24/7 Bistro</strong>. All rights reserved.
+      </div>
+      <div>
+        <span>Notice: An order is not confirmed until acknowledged by the hotel.</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/config.js"></script>
+  <script src="js/orders.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
