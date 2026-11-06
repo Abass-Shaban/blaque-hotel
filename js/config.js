@@ -14,18 +14,19 @@ const HOTEL_CONFIG = {
   
   // Contact & Social Details (Replace placeholders with actual hotel credentials)
   phone: "+254 700 123 456",
-  phoneSecondary: "+254 711 789 012",
-  email: "dining@blaquehotel.co.ke",
+  phoneSecondary: "+254 790507731",
+  email: "abassshaban9@gmail.com",
   
   // WhatsApp Configuration (Digits only with country code, e.g. 254 for Kenya)
-  whatsappNumber: "254700123456",
+  whatsappNumber: "254770507731",
   whatsappGreeting: "Hello Blaque Bistro! I would like to place an order:",
   
   // Location Details
-  address: "Argwings Kodhek Road, Kilimani, Nairobi, Kenya",
-  landmark: "Near Yaya Centre, Opposite Blaque Towers",
-  mapsUrl: "https://maps.google.com/?q=Kilimani+Nairobi+Kenya",
-  mapsEmbedUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15955.163351984218!2d36.7844007!3d-1.2920659!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f109867c4ec11%3A0x6bcfd35c59f0f9b!2sKilimani%2C%20Nairobi!5e0!3m2!1sen!2ske!4v1700000000000!5m2!1sen!2ske",
+  address: "Lucky Summer, Ruaraka, Nairobi, Kenya",
+  landmark: "Near Kasarani Stadium, Opposite Naivas Shopping Mall",
+mapsUrl: "https://www.google.com/maps/search/?api=1&query=Lucky+Summer+Ruaraka+Nairobi+Kenya",
+
+mapsEmbedUrl: "https://maps.google.com/maps?q=-1.239078,36.899621&z=16&output=embed",
   
   // Operating Hours
   hours: "Open 24 Hours / 7 Days a Week",
@@ -37,8 +38,8 @@ const HOTEL_CONFIG = {
   
   // Social Media Channels
   social: {
-    facebook: "https://facebook.com/blaquehotelnairobi",
-    instagram: "https://instagram.com/blaquehotelnairobi",
+    facebook: "https://facebook.com/share/2EgZk11Yju/",
+    instagram: "https://instagram.com/sheba_abass?psln=MWg2MHRyb21jbTJ6Yg==",
     tiktok: "https://tiktok.com/@blaquebistroke",
     twitter: "https://twitter.com/blaquehotel"
   },
