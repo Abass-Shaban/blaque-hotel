@@ -13,12 +13,12 @@ const HOTEL_CONFIG = {
   subDescription: "Enjoy freshly prepared meals, refreshing beverages, and exceptional hospitality whenever your cravings strike.",
   
   // Contact & Social Details (Replace placeholders with actual hotel credentials)
-  phone: "+254 700 123 456",
+  phone: "+254 790507731",
   phoneSecondary: "+254 790507731",
   email: "abassshaban9@gmail.com",
   
   // WhatsApp Configuration (Digits only with country code, e.g. 254 for Kenya)
-  whatsappNumber: "254770507731",
+  whatsappNumber: "254790507731",
   whatsappGreeting: "Hello Blaque Bistro! I would like to place an order:",
   
   // Location Details
